@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Level01MiniBoss : MonoBehaviour
 {
@@ -9,7 +10,9 @@ public class Level01MiniBoss : MonoBehaviour
     [SerializeField] List<GameObject> rockObjects = new List<GameObject>();
     [SerializeField] Transform rockSpawnPoint;
     [SerializeField] GameObject enemySpawner;
-    public int damageCount;
+    [SerializeField] Slider minibossSlider;
+    private float maxHealth = 100;
+    private float currentHealth = 100;
     void Start()
     {
         
@@ -17,6 +20,7 @@ public class Level01MiniBoss : MonoBehaviour
     private void OnBecameVisible()
     {
         enemySpawner.SetActive(false);
+        minibossSlider.gameObject.SetActive(true);
         InvokeRepeating("GenerateRockObjects", 0 ,5);
     }
 
@@ -29,9 +33,11 @@ public class Level01MiniBoss : MonoBehaviour
 
     public void TakeDamage()
     {
-        damageCount++;
-        if (damageCount >= 40)
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        currentHealth = currentHealth - 2;
+        minibossSlider.value = currentHealth;
+        if (currentHealth <= 0)
+            Destroy(gameObject);
+           
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

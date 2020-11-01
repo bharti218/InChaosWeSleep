@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityStandardAssets.CrossPlatformInput;
@@ -41,33 +39,28 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         // ================= Contols for andriod =================== //
-        
-            dirX = CrossPlatformInputManager.GetAxis("Horizontal") * moveSpeed;
-       
 
+        dirX = CrossPlatformInputManager.GetAxis("Horizontal") * moveSpeed;
         if (CrossPlatformInputManager.GetButtonDown("Jump") && rb.velocity.y == 0)
             rb.AddForce(Vector2.up * 300f);
-
-
         if (CrossPlatformInputManager.GetButtonDown("Attack"))
             SpellAttack();
-
         if (CrossPlatformInputManager.GetButtonDown("melee"))
             MeleeAttack();
         // =================== // 
 
         // =========== Controls for pc ================ //
-        
-            dirX = Input.GetAxisRaw("Horizontal") * moveSpeed;
 
-        if (Input.GetButtonDown("Jump") && rb.velocity.y == 0)
-            rb.AddForce(Vector2.up * 300f);
+        //dirX = Input.GetAxisRaw("Horizontal") * moveSpeed;
 
-        if (Input.GetKeyDown("x"))
-            SpellAttack();
+        //if (Input.GetButtonDown("Jump") && rb.velocity.y == 0)
+        //    rb.AddForce(Vector2.up * 300f);
 
-        if (Input.GetKeyDown("c"))
-            MeleeAttack();
+        //if (Input.GetKeyDown("x"))
+        //    SpellAttack();
+
+        //if (Input.GetKeyDown("c"))
+        //    MeleeAttack();
         // =============== //
 
         animator.SetFloat("speed", Mathf.Abs(dirX));
@@ -79,6 +72,7 @@ public class PlayerController : MonoBehaviour
 
 
     }
+
 
     private void FixedUpdate()
     {

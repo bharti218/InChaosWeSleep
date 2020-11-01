@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\OptionMenu.cs" />
     <Compile Include="Assets\Scripts\ParallaxBg.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Portal.cs" />
     <Compile Include="Assets\ThirdPartyTools\DOTween\Modules\DOTweenModuleAudio.cs" />
     <Compile Include="Assets\ThirdPartyTools\DOTween\Modules\DOTweenModulePhysics.cs" />
     <Compile Include="Assets\ThirdPartyTools\DOTween\Modules\DOTweenModulePhysics2D.cs" />
